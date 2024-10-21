@@ -3,7 +3,7 @@ module.exports = {
       return [
         {
           source: '/api/:path*',
-          destination: 'http://localhost:3001/api/:path*', // Proxy to Backend
+          destination: 'https://tic-tac-toe-fullstack-1.onrender.com/api/:path*', // Proxy to Backend
         },
       ];
     },

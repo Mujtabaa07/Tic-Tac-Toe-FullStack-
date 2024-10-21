@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "proxy": "http://localhost:3001"
+    "proxy": "https://tic-tac-toe-fullstack-1.onrender.com"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.2",
