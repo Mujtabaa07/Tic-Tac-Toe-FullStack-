@@ -282,6 +282,22 @@ app.get('/api/leaderboard', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch leaderboard' });
   }
 });
+wss.on('connection', (ws) => {
+  console.log('New WebSocket connection');
+
+  ws.on('message', (message) => {
+    console.log('Received:', message);
+    // Handle WebSocket messages
+  });
+
+  ws.on('close', () => {
+    console.log('WebSocket connection closed');
+  });
+});
+// API routes
+app.get('/', (req, res) => {
+  res.send('Tic Tac Toe Backend is running');
+});
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
