@@ -379,7 +379,7 @@ export default function Component() {
                 <SelectValue placeholder="Select Game Mode" />
               
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-black text-white">
                 <SelectItem value="pvp">Player vs Player</SelectItem>
                 <SelectItem value="online">Online PvP</SelectItem>
               </SelectContent>
