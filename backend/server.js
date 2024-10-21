@@ -12,7 +12,12 @@ dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({  origin:'https://tic-tac-toe-full-stack.vercel.app/',
+  methods:['GET','POST'],
+  allowedHeaders:['Content-Type','Authorization']
+}
+
+));
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,

@@ -231,7 +231,7 @@ export default function Component() {
       return;
     }
 
-    const newSocket = new WebSocket("ws://localhost:3001");
+    const newSocket = new WebSocket("ws://https://tic-tac-toe-fullstack-1.onrender.com");
     setSocket(newSocket);
     setIsWaiting(true);
     newSocket.onopen = () => {
@@ -251,7 +251,7 @@ export default function Component() {
       const newGameId = "game-" + Math.floor(Math.random() * (999 - 100 + 1) + 100);
       setGameId(newGameId);
 
-      const newSocket = new WebSocket("ws://localhost:3001");
+      const newSocket = new WebSocket("ws://https://tic-tac-toe-fullstack-1.onrender.com");
       setSocket(newSocket);
       setIsWaiting(true);
       newSocket.onopen = () => {
