@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 export interface ToastOptions {
   title: string
   description: string
-  variant?: 'default' | 'destructive'
+  variant?: 'default' | 'destructive'|'success'
 }
 
 export function useToast() {

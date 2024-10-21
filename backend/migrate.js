@@ -11,29 +11,28 @@ const pool = new Pool({
   }
 });
 
-// Migration query that handles creating the table and adding new columns if needed
 const migrationQuery = `
 DO $$
 BEGIN
-  -- Create table if it doesn't exist
   IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'games') THEN
     CREATE TABLE games (
       id SERIAL PRIMARY KEY,
       board TEXT[] NOT NULL,
       winner TEXT,
+      loser TEXT,
       mode TEXT NOT NULL DEFAULT 'pvp',
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   ELSE
-    -- Add 'mode' column if it doesn't exist
     IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'games' AND column_name = 'mode') THEN
       ALTER TABLE games ADD COLUMN mode TEXT DEFAULT 'pvp';
     END IF;
 
-    -- Update existing rows with a default value if 'mode' is NULL
-    UPDATE games SET mode = 'pvp' WHERE mode IS NULL;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'games' AND column_name = 'loser') THEN
+      ALTER TABLE games ADD COLUMN loser TEXT;
+    END IF;
 
-    -- Ensure the 'mode' column is NOT NULL going forward
+    UPDATE games SET mode = 'pvp' WHERE mode IS NULL;
     ALTER TABLE games ALTER COLUMN mode SET NOT NULL;
   END IF;
 END $$;
