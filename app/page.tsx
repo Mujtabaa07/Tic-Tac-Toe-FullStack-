@@ -380,8 +380,8 @@ export default function Component() {
               
               </SelectTrigger>
               <SelectContent className="bg-black text-white">
-                <SelectItem value="pvp">Player vs Player</SelectItem>
-                <SelectItem value="online">Online PvP</SelectItem>
+                <SelectItem className="cursor-pointer" value="pvp">Player vs Player</SelectItem>
+                <SelectItem className="cursor-pointer" value="online">Online PvP</SelectItem>
               </SelectContent>
             </Select>
             {gameMode === "pvp" && (
